@@ -1,0 +1,31 @@
+useEffect(()=> {
+    if(selectedYear === currentYear) {
+        setMonths(months.filter((month)=> (month.id <= currentMonth)))
+        if(isLeapYear(selectedYear) && selectedMonth === "February"){
+            setDays(Array.from({length : 30} , (_,i) => i))
+          }
+          if(!isLeapYear(selectedYear) && selectedMonth === "February") {
+            setDays(Array.from({length: 29} , (_,i) => i ))
+          }
+      if(selectedMonth === "January" || selectedMonth === "March" || selectedMonth === "May" || selectedMonth === "July" || selectedMonth === "September" || selectedMonth === "November" ) {
+        setDays(Array.from({length:32} , (_,i)=>i))
+      }
+      if(selectedMonth === "April" || selectedMonth === "June" || selectedMonth === "August" || selectedMonth === "October" || selectedMonth === "December") {
+        setDays(Array.from({length:31} , (_,i)=> i))
+      }
+    } else if(selectedYear < currentYear) {
+        setMonths(monthsData)
+      if(isLeapYear(selectedYear) && selectedMonth === "February"){
+        setDays(Array.from({length : 30} , (_,i) => i))
+      }
+      if(!isLeapYear(selectedYear) && selectedMonth === "February") {
+        setDays(Array.from({length: 29} , (_,i) => i ))
+      }
+      if(selectedMonth === "January" || selectedMonth === "March" || selectedMonth === "May" || selectedMonth === "July" || selectedMonth === "September" || selectedMonth === "November" ) {
+        setDays(Array.from({length:32} , (_,i)=>i))
+      }
+      if(selectedMonth === "April" || selectedMonth === "June" || selectedMonth === "August" || selectedMonth === "October" || selectedMonth === "December") {
+        setDays(Array.from({length:31} , (_,i)=> i))
+      }
+    }
+  } , [selectedYear , selectedMonth])
